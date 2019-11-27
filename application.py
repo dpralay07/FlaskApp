@@ -5,7 +5,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello Pralay! Welcome to Azure."
+    return "Hello! Welcome to Azure."
+
+@app.route("/home")
+def home():
+    return "Hello! Welcome to the Home page of GSBot."
 
 
 if __name__ == "__main__":
