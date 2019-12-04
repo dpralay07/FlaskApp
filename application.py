@@ -16,17 +16,16 @@ def home():
 	
 @app.route("/view")
 def view():
-	server = 'gsbotdb.database.windows.net'
-	database = 'gsbotdb'
-	username = 'gsbot'
-	password = 'admin!23'
-	driver= '{ODBC Driver 17 for SQL Server}'
-	cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
-	cursor = cnxn.cursor()
-	cursor.execute("SELECT TOP (10) * FROM [dbo].[views]")
-	data = cursor.fetchall()
-	
-	issues = list()
+    server = 'gsbotdb.database.windows.net'
+    database = 'gsbotdb'
+    username = 'gsbot'
+    password = 'admin!23'
+    driver= '{ODBC Driver 17 for SQL Server}'
+    cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+    cursor = cnxn.cursor()
+    cursor.execute("SELECT TOP (10) * FROM [dbo].[views]")
+    data = cursor.fetchall()
+    issues = list()
     for item in data:
         # print(item)
         content = dict()
