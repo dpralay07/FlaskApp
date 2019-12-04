@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import pyodbc
 
+
 app = Flask(__name__)
 
 
@@ -11,6 +12,7 @@ def hello():
 @app.route("/home")
 def home():
     return jsonify({'status': 'success', 'description': 'Endpoint is working fine.'})
+	
 	
 @app.route("/view")
 def view():
@@ -30,3 +32,8 @@ def view():
 
 if __name__ == "__main__":
     app.run()
+
+
+if __name__ == "__main__":
+    app.run()
+
