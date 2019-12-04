@@ -23,11 +23,22 @@ def view():
 	driver= '{ODBC Driver 17 for SQL Server}'
 	cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 	cursor = cnxn.cursor()
-	cursor.execute("SELECT TOP (10) * FROM [dbo].[BotData]")
-	row = cursor.fetchall()
-	print(row)
+	cursor.execute("SELECT TOP (10) * FROM [dbo].[views]")
+	data = cursor.fetchall()
 	
-	return jsonify({'status': 'success', 'description': 'Endpoint is working fine.'})
+	issues = list()
+    for item in data:
+        # print(item)
+        content = dict()
+        content['id'] = item[0]
+        content['issue_type'] = item[1]
+        content['issue'] = item[2]
+        content['impact'] = item[3]
+        print(content)
+        issues.append(content)
+    print(issues)
+    return jsonify({'items': issues})
+	
 
 
 if __name__ == "__main__":
